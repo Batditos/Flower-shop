@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/catalog.css' %}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="containerCatalog">
+        {% for product in products %}
+      <div class="containerDescription">
+        <img class="image" src="{{ product.image.url }}" />
+        <p class="title">Букет "{{ product.name }}"</p>
+        <h3 class="price">{{ product.price }} &#8381;</h3>
+       
+    </div>
+    {% endfor %}
+</body>
+</html>
