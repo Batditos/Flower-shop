@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    {% load static %}
+    <link href="{% static 'css/timer.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/heading.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/showcase.css' %}" rel="stylesheet" />
+    <script src="{% static 'js/timer.js' %}"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>"Что-то на цветочном"</title>
+  </head>
+  <body>
+    <div class="containerTimer">
+      <p id="timer">
+        До 8 Марта осталось:
+        <span id="timer-days"> </span>
+        <span id="timer-hours"> </span>
+        <span id="timer-mins"> </span>
+        <span id="timer-secs"> </span>
+      </p>
+    </div>
+
+    <div class="containerHeading">
+      <div class="menu">
+        <a href="/">M</a>
+      </div>
+      <div class="neonHeading">
+        <h3 class="heading_title">
+          "Что-то <br />
+          на цветочном" <br />
+          <span class="subtitle">Студия флористического дизайна</span>
+        </h3>
+      </div>
+      <div class="menu">
+        <a href="/">П</a>
+        <a href="/cart/detail/">Корзина</a>
+        <a href="/account/login/">Р</a>
+      </div>
+    </div>
+    <div class="conteinerManagement">
+      <a href="catalog/">Каталог</a>
+      <a href="/">Конструктор букетов</a>
+      <a href="/">Мастер классы</a>
+      <a href="/">sale</a>
+      <a href="/">Цветочная подписка</a>
+      <a href="/">О нас</a>
+    </div>
+    <div class="like"><p>Советуем:</p></div>
+    <div class="containerShowcase">
+      {% for product in products %}
+      <div class="containerDescription">
+        <img class="image" src="{{ product.image.url }}" />
+        <p class="title">Букет "{{ product.name }}"</p>
+        <h3 class="price">{{ product.price }} &#8381;</h3>
+        <p class="description"></p>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
