@@ -1,0 +1,25 @@
+.containerTimer {
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #timer {
+    font-family: sans-serif;
+    word-spacing: 10px;
+    letter-spacing: 4px;
+    color: rgb(250, 171, 211);
+    font-size: 1.35rem;
+  }
+  .label {
+    font-size: 1em;
+    padding-left: 0.25em;
+  }
+  @media screen and (max-width: 767px) {
+    #timer {
+      font-size: 0.8em;
+      text-align: center;
+    }
+  }
+  
