@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from shop.models import Product
 
-# Create your views here.
+def index(request):
+    context = {
+        'product': Product.objects.all()
+    }
+    return render(request, 'shop/main.html', context)
