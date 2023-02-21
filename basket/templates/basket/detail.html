@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/detail.css' %}" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Корзина</title>
+</head>
+<body>
+    <div class="containerBasket">
+      {% for item in basket %} {% with product=item.product %}
+        <div class="containerProduct">
+            <!-- <a href="{{ product.get_absolute_url }}"> -->
+              <img class="image" src="{{ product.image.url }}"/>
+           <div class="text">
+            <h4>Названия: {{ product.name }}</h4>
+            <p>Количество: {{ item.quantity }}</p>
+            <a href="{% url 'basket:basket_remove' product.id %}">Удалить</a>
+            <p>Цена: {{ item.price }} &#8381;</p>
+           </div>
+          </div>
+          
+          <p>общая цена {{ item.total_price }}</p>
+          {% endwith %} {% endfor %}
+          <a href="/catalog/">Каталог</a>
+        </div>
+        
+        
+        
+    </div>
+</body>
+</html>
