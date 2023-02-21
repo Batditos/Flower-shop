@@ -1,0 +1,19 @@
+.containerBasket {
+  margin: auto;
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: space-between;
+  background-color: rgba(216, 50, 50, 0.308);
+}
+.containerProduct {
+  background-color: aqua;
+  width: 90em;
+  height: 15em;
+  margin: 1.5rem;
+}
+.image {
+  height: 15em;
+  width: 15em;
+}
