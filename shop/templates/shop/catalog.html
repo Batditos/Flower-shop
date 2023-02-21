@@ -16,7 +16,11 @@
         <img class="image" src="{{ product.image.url }}" />
         <p class="title">Букет "{{ product.name }}"</p>
         <h3 class="price">{{ product.price }} &#8381;</h3>
-       
+    <form action="{% url 'basket:basket_add' product.id %}" method="post">
+    {{ cart_product_form }}
+    {% csrf_token %}
+    <input type="submit" value="Купить">
+    </form>
     </div>
     {% endfor %}
 </body>
