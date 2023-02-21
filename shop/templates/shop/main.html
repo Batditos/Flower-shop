@@ -36,7 +36,7 @@
       </div>
       <div class="menu">
         <a href="/">П</a>
-        <a href="/">Корзина</a>
+        <a href="basket/">Корзина</a>
         <a href="/">Р</a>
       </div>
     </div>
@@ -56,8 +56,14 @@
         <p class="title">Букет "{{ product.name }}"</p>
         <h3 class="price">{{ product.price }} &#8381;</h3>
         <p class="description"></p>
+        <form action="{% url 'basket:basket_add' product.id %}" method="post">
+          {{ cart_product_form }} {% csrf_token %}
+          <input type="submit" value="Купить" />
+        </form>
+        
       </div>
       {% endfor %}
+      
     </div>
   </body>
 </html>
