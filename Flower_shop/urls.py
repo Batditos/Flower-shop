@@ -20,6 +20,7 @@ from Flower_shop import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('basket/', include('basket.urls', namespace='basket')),
     path('', include('shop.urls'), name='shop')
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
