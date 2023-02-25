@@ -8,17 +8,19 @@ from .basket import Basket
 from .forms import CartAddProductForm
 
 
+
 @require_POST
 def basket_add(request, product_id):
-
     basket = Basket(request)
     product = get_object_or_404(Product, id=product_id)
     form = CartAddProductForm(request.POST)
+    print('18')
     if not form.is_valid():
         cd = form.cleaned_data
+        print('строчка 20', cd)
         basket.add(product=product,
-                   quantity=['quantity'],
-                   update_quantity=['update'])
+                quantity=1,
+                update_quantity=cd['update'])
     return redirect('basket:basket_detail')
     # return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
