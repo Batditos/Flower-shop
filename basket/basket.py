@@ -28,9 +28,11 @@ class Basket(object):
 
         else:
             self.basket[product_id]['quantity'] += quantity
-            print(self.basket[product_id]['quantity'])  # TODO
+            print(self.basket[product_id]['quantity'])  
         self.save()
-         # Обновление сессии basket
+
+    def save(self):
+        # Обновление сессии basket
         self.session[settings.CART_SESSION_ID] = self.basket
         # Отметить сеанс как "измененный", чтобы убедиться, что он сохранен
         self.session.modified = True
@@ -41,7 +43,7 @@ class Basket(object):
         product_id = str(product.id)
         if product_id in self.basket:
             del self.basket[product_id]
-            self.save()
+        self.save()
             
     def __iter__(self):
 
