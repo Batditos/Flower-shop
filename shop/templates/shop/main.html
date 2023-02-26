@@ -25,7 +25,7 @@
 
     <div class="containerHeading">
       <div class="menu">
-        <a href="/">M</a>
+        <a href="/">Mеню</a>
       </div>
       <div class="neonHeading">
         <h3 class="heading_title">
@@ -35,9 +35,9 @@
         </h3>
       </div>
       <div class="menu">
-        <a href="/">П</a>
+        <a href="/">Поиск</a>
         <a href="basket/">Корзина</a>
-        <a href="/">Р</a>
+        <a href="/">Регистрация</a>
       </div>
     </div>
     <div class="conteinerManagement">
@@ -60,10 +60,8 @@
           {{ cart_product_form }} {% csrf_token %}
           <input type="submit" value="Купить" />
         </form>
-        
       </div>
       {% endfor %}
-      
     </div>
   </body>
 </html>
