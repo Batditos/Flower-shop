@@ -28,7 +28,7 @@ class Basket(object):
 
         else:
             self.basket[product_id]['quantity'] += quantity
-            print(self.basket[product_id]['quantity'])  
+            print(self.basket[product_id]['quantity'])
         self.save()
 
     def save(self):
@@ -42,9 +42,11 @@ class Basket(object):
 
         product_id = str(product.id)
         if product_id in self.basket:
+            print(self.basket)
+            print('удаление',product_id)
             del self.basket[product_id]
         self.save()
-            
+
     def __iter__(self):
 
         product_ids = self.basket.keys()
@@ -52,18 +54,46 @@ class Basket(object):
         products = Product.objects.filter(id__in=product_ids)
         for product in products:
             self.basket[str(product.id)]['product'] = product
-            print('55 views', self.basket[str(product.id)])  # TODO
+            # print('55 views', self.basket[str(product.id)])  # TODO
 
         for item in self.basket.values():
 
-            item['price'] = int(Decimal(item['price']))
+            item['price'] = Decimal(item['price'])
             # Получение общей стоимости товаров одного типа
             item['total_price'] = item['price'] * item['quantity']
             yield item
 
+    def minus(self, product):
+        '''Уменьшение товара в корзине'''
 
+        # product_ids = self.basket.keys()
+        # print(70, product_ids)
+        # products = Product.objects.filter(id__in=product_ids)
+        product_id = str(product.id)
+        if product_id in self.basket:
+            quantity = self.basket[str(product.id)]['quantity']
+            if quantity > 1:
+                    print(quantity)
+                    self.basket[str(product.id)]['quantity'] -= 1
+        self.save()
+        return self.basket[str(product.id)]['quantity']
+    
+
+    def plus(self, product):
+        '''Увиличения товара в корзине'''
+
+        product_id = str(product.id)
+        if product_id in self.basket:
+            quantity = self.basket[str(product.id)]['quantity']
+            if quantity >= 1:
+                    print(quantity)
+                    self.basket[str(product.id)]['quantity'] += 1
+        self.save()
+        return self.basket[str(product.id)]['quantity']
+
+
+    def len(self):
         """Получение общего кол-во товаров в корзине"""
-
         return sum(item['quantity'] for item in self.basket.values())
 
     def get_total_price(self):
