@@ -1,35 +1,59 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  {% load static %}
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link href="{% static 'css/main.css' %}" rel="stylesheet" />
-  <link href="{% static 'css/detail.css' %}" rel="stylesheet" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Корзина</title>
-</head>
-<body>
-    <div class="containerBasket">
-      {% for item in basket %} {% with product=item.product %}
-        <div class="containerProduct">
-            <!-- <a href="{{ product.get_absolute_url }}"> -->
-              <img class="image" src="{{ product.image.url }}"/>
-           <div class="text">
-            <h4>Названия: {{ product.name }}</h4>
-            <p>Количество: {{ item.quantity }}</p>
-            <a href="{% url 'basket:basket_remove' product.id %}">Удалить</a>
-            <p>Цена: {{ item.price }} &#8381;</p>
-           </div>
-          </div>
-          
-          <p>общая цена {{ item.total_price }}</p>
-          {% endwith %} {% endfor %}
-          <a href="/catalog/">Каталог</a>
-        </div>
-        
-        
-        
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/detail.css' %}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Корзина</title>
+  </head>
+  <body>
+    <div class="navBar">
+      <h4><a href="/catalog/">Каталог</a></h4>
+      <h4><a href="/">Главная страница</a></h4>
     </div>
-</body>
+    <div class="containerBasket">
+      <div class="containerProduct">
+        <table>
+          {% for item in basket %} {% with product=item.product %}
+          <tr>
+            <td scope="row">
+              <img class="image" src="{{ product.image.url }}" />
+            </td>
+            <td>{{ product.name }}</td>
+            <td>{{ item.price }} &#8381;</td>
+            <td>
+              <a class="minus" href="{% url 'basket:minus_quantity' product.id %}">-</a> 
+              <span class="quantity">{{ item.quantity }}</span>
+              <a class="plus" href="{% url 'basket:plus_quantity' product.id %}">+</a>
+            </td>
+            <td>{{ item.total_price }} &#8381;</td>
+            <td>
+              <a href="{% url 'basket:basket_remove' product.id %}">Удалить</a>
+            </td>
+          </tr>
+          {% endwith %} {% endfor %}
+        </table>
+      </div>
+      <div class="ContainerBasketInfo">
+        <div class="BasketInfo">
+          <p>
+            Товары {{ basket.len }} шт.
+            <span class="totalPrice">{{ basket.get_total_price }} &#8381;</span>
+          </p>
+          <h2>
+            Итого:
+            <span class="totalPrice">{{ basket.get_total_price }} &#8381;</span>
+          </h2>
+          <input class="submit" type="submit" value="Заказать" />
+        </div>
+        <p>
+          Соглашаюсь с <a href="">правилами пользования торговой площадкой</a> и
+          <a href="">возврата</a>
+        </p>
+      </div>
+    </div>
+  </body>
 </html>
