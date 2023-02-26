@@ -10,6 +10,7 @@
     <title>Корзина</title>
   </head>
   <body>
+    
     <div class="navBar">
       <h4><a href="/catalog/">Каталог</a></h4>
       <h4><a href="/">Главная страница</a></h4>
@@ -25,9 +26,15 @@
             <td>{{ product.name }}</td>
             <td>{{ item.price }} &#8381;</td>
             <td>
-              <a class="minus" href="{% url 'basket:minus_quantity' product.id %}">-</a> 
+              <a
+                class="minus"
+                href="{% url 'basket:minus_quantity' product.id %}"
+                >-</a
+              >
               <span class="quantity">{{ item.quantity }}</span>
-              <a class="plus" href="{% url 'basket:plus_quantity' product.id %}">+</a>
+              <a class="plus" href="{% url 'basket:plus_quantity' product.id %}"
+                >+</a
+              >
             </td>
             <td>{{ item.total_price }} &#8381;</td>
             <td>
@@ -38,6 +45,7 @@
         </table>
       </div>
       <div class="ContainerBasketInfo">
+        {% if basket.len > 0 %}
         <div class="BasketInfo">
           <p>
             Товары {{ basket.len }} шт.
@@ -53,7 +61,11 @@
           Соглашаюсь с <a href="">правилами пользования торговой площадкой</a> и
           <a href="">возврата</a>
         </p>
+        {% else %}
+        <h1>Корзина пуста</h1>
+       <h3><a href="/catalog/">Перейти в каталог</a></h3>
       </div>
     </div>
+    {% endif %}
   </body>
 </html>
