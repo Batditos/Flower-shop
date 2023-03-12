@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/profile.css' %}" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профиль</title>
+</head>
+<body>
+  <div class="containerProfile">
+
+    <div class="profile">
+      <div class="userProfile">
+        <div class="image">Фото</div>
+        <div class="userInfo">
+      <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+      <p>{{ user.username }}</p>
+      <p>{{ user.email }}</p>
+    </div>
+    </div>
+      <form action="{% url 'accounts:logout_views' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Выйти" />
+      </form>
+
+    </div>
+    <div class="basket"></div>
+  </div>
+</body>
+</html>
