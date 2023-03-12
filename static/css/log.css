@@ -1,0 +1,53 @@
+.containerLog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 100vw;
+}
+.login {
+  background-color: rgba(87, 50, 250, 0.233);
+  height: 35em;
+  width: 25em;
+  text-align: center;
+  /* border: 1px solid rgb(187, 187, 187); */
+}
+#id_username,
+#id_password,
+#id_password1,
+#id_password2,
+#id_email,
+#id_first_name,
+#id_last_name {
+  width: 95%;
+  height: 2em;
+  font-size: 16px;
+  margin: 5px;
+}
+label {
+  margin: 20px 10px;
+  font-size: 18px;
+}
+.submit {
+  /* margin: 70px 10px 0 10px; */
+  font-size: 20px;
+  width: 95%;
+  height: 2.8em;
+  background-color: rgb(0, 221, 147);
+  border: none;
+  /* border-radius: -1px; */
+  cursor: pointer;
+}
+ul {
+  margin: 0;
+  padding: 0px;
+  text-align: center;
+}
+li {
+  font-size: 18px;
+  list-style-type: none;
+  color: rgb(219, 6, 6);
+}
+/* label {
+  margin-right: 90%;
+} */
