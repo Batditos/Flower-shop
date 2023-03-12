@@ -17,10 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from Flower_shop import settings
+import django.contrib.auth.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('basket/', include('basket.urls', namespace='basket')),
-    path('', include('shop.urls'), name='shop')
+    # path('accounts/', include(('django.contrib.auth.urls',
+    #      'accounts'), namespace='accounts')),
+    path('', include('shop.urls'), name='shop'),
+    path('accounts/', include(('accounts.urls',
+                               'accounts'), namespace='accounts')),
+
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
