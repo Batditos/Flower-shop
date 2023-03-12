@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    {% load static %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/log.css' %}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Регистрация</title>
+  </head>
+  <body>
+    <div class="containerLog">
+      <div class="login">
+        <h3>Регистрация</h3>
+
+        <form action="." method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+          <p>
+            <input class="submit" type="submit" value="Зарегистрироваться" />
+          </p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
