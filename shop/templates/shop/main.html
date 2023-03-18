@@ -15,7 +15,7 @@
   <body>
     <div class="containerTimer">
       <p id="timer">
-        До 8 Марта осталось:
+        До 9 Мая осталось:
         <span id="timer-days"> </span>
         <span id="timer-hours"> </span>
         <span id="timer-mins"> </span>
@@ -35,12 +35,15 @@
         </h3>
       </div>
       <div class="menu">
+       
         <a href="/">
           <img src="{% static 'image/search.png' %}" alt="Поиск"
         /></a>
         <a href="basket/"
-          ><img src="{% static 'image/basket.png' %}" alt="Корзина" />
-          <p>LEN : {{ basket }}</p></a
+          > {% if baskets.len > 0 %}
+          <p class="lenBasket">{{ baskets.len }}</p>
+          {% else %}{% endif %}<img src="{% static 'image/basket.png' %}" alt="Корзина" />
+          </a
         >
         {% if request.user.is_authenticated %}
         <a href="accounts/profile/"
