@@ -1,33 +1,58 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  {% load static %}
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link href="{% static 'css/main.css' %}" rel="stylesheet" />
-  <link href="{% static 'css/profile.css' %}" rel="stylesheet" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Профиль</title>
-</head>
-<body>
-  <div class="containerProfile">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/profile.css' %}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Профиль</title>
+  </head>
+  <body>
+    <div class="containerProfile">
+      <div class="profile">
+        <div class="userProfile">
+          <div class="image">
+            <img src="{{ user.image_user.url }}" alt="Фото" />
+          </div>
+          <div class="userInfo">
+            
+            <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+            <p>{{ user.username }}</p>
+            <p>{{ user.email }}</p>
+            <p>{{ user.phone_number }}</p>
+            <a href="/admin/">Админка</a>
+          </div>
+        </div>
+        <form action="{% url 'accounts:logout_views' %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Выйти" />
+        </form>
+      </div>
+      
+      <div class="basket">
 
-    <div class="profile">
-      <div class="userProfile">
-        <div class="image">Фото</div>
-        <div class="userInfo">
-      <h4>{{ user.first_name }} {{ user.last_name }}</h4>
-      <p>{{ user.username }}</p>
-      <p>{{ user.email }}</p>
+        {% if baskets.len > 0 %}
+        <p>
+          Товары {{ baskets.len }} шт.
+          <span class="totalPrice">{{ baskets.get_total_price }} &#8381;</span>
+        </p>
+        <h2>
+          Итого:
+          <span class="totalPrice">{{ baskets.get_total_price }} &#8381;</span>
+        </h2>
+        <input class="submit" type="submit" value="Заказать" />
+        {% else %}
+        <h1>Корзина пуста</h1>
+       <h3><a href="/catalog/">Перейти в каталог</a></h3>
+      </div>
     </div>
+    {% endif %}
+        <a href="/basket/">В Корзину</a>
+      </div>
+     
+      </div>
     </div>
-      <form action="{% url 'accounts:logout_views' %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Выйти" />
-      </form>
-
-    </div>
-    <div class="basket"></div>
-  </div>
-</body>
+  </body>
 </html>
