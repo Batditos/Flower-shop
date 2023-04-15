@@ -1,0 +1,16 @@
+{% extends 'adminpanel/main.html' %} {% load static %}
+
+{% block title %}Редактирование{% endblock %} 
+
+{% block content%}
+  <h1>Добавление товара</h1>
+
+  <div class="update_form">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %} {{ form.as_table }}
+
+      <input type="submit" value="Добавить" />
+    </form>
+    <a href="{% url 'adminpanel:admin' %}">Назад</a>
+  </div>
+{% endblock %}
