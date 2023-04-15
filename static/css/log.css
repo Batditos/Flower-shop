@@ -18,7 +18,8 @@
 #id_password2,
 #id_email,
 #id_first_name,
-#id_last_name {
+#id_last_name,
+#id_phone_number {
   width: 95%;
   height: 2em;
   font-size: 16px;
