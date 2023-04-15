@@ -1,0 +1,44 @@
+.containerUpdate {
+  background-color: rgba(250, 235, 215, 0.473);
+  height: 100vh;
+  width: 70%;
+  margin: auto;
+}
+.update_form,
+.image_product {
+  margin: 5em;
+}
+h1,
+h4 {
+  margin: 0;
+  padding: 20px 0 0 150px;
+}
+.image_product {
+  margin-top: 10em;
+  width: 25em;
+  height: 25em;
+}
+.update_form {
+  background-color: rgba(0, 255, 255, 0.425);
+  float: right;
+  height: 35em;
+  width: 25em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+#id_image,
+#id_name,
+#id_category,
+#id_price,
+#id_quantity,
+#id_description {
+  width: 95%;
+  height: 2em;
+  font-size: 16px;
+  margin: 5px;
+  margin-top: 10px;
+}
+#id_description {
+  height: 5em;
+}
