@@ -11,6 +11,10 @@ class User(AbstractUser):
     email = models.EmailField(max_length=255, unique=True)
     REQUIRED_FIELDS = ['username']
 
-    phone_number = PhoneNumberField(unique=True)
+    phone_number = PhoneNumberField(
+        unique=True,  verbose_name='Номер телефона')
     image_user = models.ImageField(
-        upload_to='user_image/', default='user_image/default.png')
+        upload_to='user_image/', default='user_image/default.png', verbose_name='Фото')
+
+    def get_absolute_url(self):
+        return f'/adminpanel/users/'
