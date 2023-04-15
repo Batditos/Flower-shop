@@ -1,0 +1,30 @@
+{% extends 'adminpanel/main.html' %}
+{% block title %}Заказы{% endblock %}
+
+{% block content %}
+<div class="info">
+    <h2>Заказы</h2>
+    <table>
+      <tr>
+        <th></th>
+        <th>№ заказа</th>
+        <th>Статус</th>
+        <th>Дата</th>
+        <th>Имя клиента</th>
+        <th>Email</th>
+        <th>Номер телефон</th>
+        <th>Наименование</th>
+      </tr>
+      <tr>
+        <td scope="row"></td>
+        <td>#54321</td>
+        <td>В обратобке</td>
+        <td>18.03.2023</td>
+        <td>Иван</td>
+        <td>ivan@mail.ru</td>
+        <td>+79021234455.</td>
+        <td>Букет "Велюр", 1 шт.</td>
+      </tr>
+    </table>
+  </div>
+{% endblock %}
