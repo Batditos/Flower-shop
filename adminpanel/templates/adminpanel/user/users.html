@@ -1,0 +1,31 @@
+{% extends 'adminpanel/main.html' %} {% load static %} 
+{% block title %}Пользователи{% endblock %} 
+{% block content %}
+<div class="info">
+  <h2>База клиентов</h2>
+  <table>
+    <tr>
+      <th></th>
+      <th>Фото</th>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Email</th>
+      <th>Номер телефона</th>
+      <th></th>
+    </tr>
+    {% for user in users %}
+    <tr>
+      <td scope="row"></td>
+      <td>
+        <img class="image_user" src="{{ user.image_user.url }}" alt="Фото" />
+      </td>
+      <td>{{ user.first_name }}</td>
+      <td>{{ user.last_name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phone_number }}</td>
+      <td></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}
