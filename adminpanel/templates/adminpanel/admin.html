@@ -1,0 +1,10 @@
+{% extends 'adminpanel/main.html' %} 
+{% block title %}Панель администратора{% endblock %} 
+{% block content %}
+<div class="info">
+  <p>
+    <span>общее кол-во заказов</span>
+    <span>общее кол-во пользователей {{ len_users }}</span>
+  </p>
+</div>
+{% endblock %}
