@@ -1,0 +1,45 @@
+{% extends 'adminpanel/main.html' %}
+{% load static %}
+{% block title %}Товары{% endblock %}
+
+{% block content %}
+<div class="info">
+    <h2>Товары</h2>
+
+    <table class="table">
+      <tr>
+        <th></th>
+        <th>Фото</th>
+        <th>Название</th>
+        <th>Категория</th>
+        <th>Цена</th>
+        <th>Количество</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <a href="{% url 'adminpanel:add' %}">Добавить товар</a>
+      {% for product in products %}
+
+      <tr>
+        
+          <td scope="row"></td>
+          <td>
+            <img
+              class="image_user"
+              src="{{ product.image.url }}"
+              alt="Фото"
+            />
+          </td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.price }} &#8381;</td>
+          <td>{{ product.quantity }} шт.</td>
+          <td><a href="{% url 'adminpanel:update' product.pk %}">Редактировать</a>
+          </td>
+          <td><a href="{% url 'adminpanel:del' product.pk %}">Удалить</a></td>
+        </form>
+      </tr>
+      {% endfor %}
+    </table>
+</div>
+{% endblock %}
