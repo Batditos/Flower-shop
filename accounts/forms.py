@@ -52,7 +52,7 @@ class CustomUserCreationForm(UserCreationForm):
     # username = forms.CharField(label='Логин', min_length=5, max_length=150)
     first_name = forms.CharField(label='Имя', min_length=2,)
     # last_name = forms.CharField(label='Фамилия')
-    phone_number = formfields.PhoneNumberField()
+    phone_number = PhoneNumberField(verbose_name='Номер телефона')
 
     password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput)
     password2 = forms.CharField(
