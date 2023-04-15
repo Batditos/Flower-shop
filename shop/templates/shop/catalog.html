@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     {% load static %}
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="{% static 'js/poisk.js' %}"></script>
     <link href="{% static 'css/main.css' %}" rel="stylesheet" />
     <link href="{% static 'css/catalog.css' %}" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="navBar">
-        <h4><a href="/">Главная страница</a></h4>
-        <h4><a href="/basket/">Корзина</a></h4>
-      </div>
-    <div class="containerCatalog">
-        {% for product in products %}
+      <input id="poisk" type="text" oninput="find_cat(this)" />
+      <h4><a href="/">Главная страница</a></h4>
+      <h4><a href="/basket/">Корзина</a></h4>
+    </div>
+    <div  id="list_global" class="containerCatalog">
+      {% for product in products %}
       <div class="containerDescription">
         <img class="image" src="{{ product.image.url }}" />
-        <p class="title">Букет "{{ product.name }}"</p>
+        <pclass="title">Букет "{{ product.name }}"</pclass=>
         <h3 class="price">{{ product.price }} &#8381;</h3>
-    <form action="{% url 'basket:basket_add' product.id %}" method="post">
-    {{ cart_product_form }}
-    {% csrf_token %}
-    <input type="submit" value="Купить">
-    </form>
+        <form action="{% url 'basket:basket_add' product.id %}" method="post">
+          {{ cart_product_form }} {% csrf_token %}
+          <input type="submit" value="Купить" />
+        </form>
+      </div>
+      {% endfor %}
+
+      <h4>Сделать лайки по принципу корзины <span>{{ basket.len }}</span></h4>
     </div>
-    {% endfor %}
-</body>
+  </body>
 </html>
