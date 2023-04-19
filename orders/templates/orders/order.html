@@ -1,0 +1,26 @@
+{% load static %}
+<link href="{% static 'css/main.css' %}" rel="stylesheet" />
+<link href="{% static 'css/catalog.css' %}" rel="stylesheet" />
+
+{% block content %}
+<h1>Заказ</h1>
+<div>
+  <div class="order-info">
+    <h3>Ваш Заказ</h3>
+    <ul>
+      {% for item in cart %}
+      <li>
+        {{ item.quantity }}x {{ item.product.name }}
+        <span>: {{ item.total_price }} &#8381;</span>
+      </li>
+      {% endfor %}
+    </ul>
+    <p>Общая сумма: {{ cart.get_total_price }} &#8381;</p>
+  </div>
+  <form action="." method="post" class="order-form">
+    {{ form.as_p }}
+    <p><input type="submit" value="Оформить заказ" /></p>
+    {% csrf_token %}
+  </form>
+</div>
+{% endblock %}
