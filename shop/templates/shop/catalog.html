@@ -18,7 +18,9 @@
     </div>
     <div  id="list_global" class="containerCatalog">
       {% for product in products %}
-      <div class="containerDescription">
+      {% if product.quantity != 0 %}
+      
+      <div:disabled class="containerDescription">
         <img class="image" src="{{ product.image.url }}" />
         <pclass="title">Букет "{{ product.name }}"</pclass=>
         <h3 class="price">{{ product.price }} &#8381;</h3>
@@ -26,7 +28,8 @@
           {{ cart_product_form }} {% csrf_token %}
           <input type="submit" value="Купить" />
         </form>
-      </div>
+      </div:disabled>
+      {% endif %}
       {% endfor %}
 
       <h4>Сделать лайки по принципу корзины <span>{{ basket.len }}</span></h4>
