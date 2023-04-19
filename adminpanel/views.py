@@ -6,6 +6,7 @@ from django.views.generic.edit import UpdateView,  CreateView, DeleteView
 
 from accounts.models import User
 from adminpanel.forms import UpdateProductForm
+from orders.models import Order, OrderItem
 from shop.models import Product
 from accounts.models import User
 from accounts.forms import CustomUserCreationForm
@@ -24,9 +25,9 @@ def admin(request):
     return render(request, 'adminpanel/admin.html', context)
 
 
-def orders(request):
-    context = {}
-    return render(request, 'adminpanel/orders.html', context)
+# def orders(request):
+#     context = {}
+#     return render(request, 'adminpanel/orders.html', context)
 
 
 def users(request):
@@ -63,3 +64,10 @@ class DelProduct(DeleteView):
     success_url = reverse_lazy('adminpanel:products')
 
 
+def orders(request):
+    orders= Order.objects.all()
+    orderitem = OrderItem.objects.all()
+    context = {
+        'orders': orders, 'orderitem': orderitem
+    }
+    return render(request, 'adminpanel/orders.html', context)
