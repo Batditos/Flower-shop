@@ -5,17 +5,15 @@
 {% block content%}
 <div class="containerUpdate">
   <h1>Редактирование</h1>
-  <p>{{product.name}}</p>
-  <!-- <label>{{product.name}}</label> -->
   <img class="image_product" src="{{ product.image.url }}" alt="Фото" />
 
   <div class="update_form">
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %} {{ form.as_table }}
 
-      <input type="submit" value="Обновить" />
+      <input class="submit" type="submit" value="Обновить" />
     </form>
-    <a href="{% url 'adminpanel:admin' %}">Назад</a>
+   
   </div>
 </div>
 {% endblock %}
