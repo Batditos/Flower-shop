@@ -3,7 +3,7 @@
 {% block title %}Товары{% endblock %}
 
 {% block content %}
-<div class="info">
+<div class="infoPanel">
     <h2>Товары</h2>
 
     <table class="table">
@@ -15,12 +15,12 @@
         <th>Цена</th>
         <th>Количество</th>
         <th></th>
-        <th></th>
+        <th><a href="{% url 'adminpanel:add' %}">Добавить товар</a></th>
       </tr>
-      <a href="{% url 'adminpanel:add' %}">Добавить товар</a>
+      
       {% for product in products %}
 
-      <tr>
+      <tr class="order-tr">
         
           <td scope="row"></td>
           <td>
@@ -33,7 +33,7 @@
           <td>{{ product.name }}</td>
           <td>{{ product.category }}</td>
           <td>{{ product.price }} &#8381;</td>
-          <td>{{ product.quantity }} шт.</td>
+          <td>{{ product.quantity  }} шт.</td>
           <td><a href="{% url 'adminpanel:update' product.pk %}">Редактировать</a>
           </td>
           <td><a href="{% url 'adminpanel:del' product.pk %}">Удалить</a></td>
