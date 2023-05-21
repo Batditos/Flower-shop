@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/profile.css' %}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <aside>
+      <div class="info">
+      <div class="ContainerBasketInfo">
+        {% if basket.len > 0 %}
+        <div class="BasketInfo">
+          <p>
+            Товары {{ basket.len }} шт.
+            <span class="totalPrice">{{ basket.get_total_price }} &#8381;</span>
+          </p>
+          <h2>
+            Итого:
+            <span class="totalPrice">{{ basket.get_total_price }} &#8381;</span>
+          </h2>
+          <form action="{% url 'orders:order' %}" method="post">{% csrf_token %}
+            <input class="submit" type="submit" value="Заказать" />
+        </div>
+        <p>
+          Соглашаюсь с <a href="">правилами пользования торговой площадкой</a> и
+          <a href="">возврата</a>
+        </p>
+        {% else %}
+        <h1>Корзина пуста</h1>
+       <h3><a href="/catalog/">Перейти в каталог</a></h3>
+       {% endif %}
+      </div>
+  </div>
+  
+</aside>
+   <main>
+    <div class="back">
+    <a href="/">Главная страница</a>
+  </div>
+    {% block content %} 
+    {% endblock %}
+    <h3>История заказов</h3>
+    <div class="ContainerOrderInfo">
+     
+      {% for order in order_items %}
+      <a href="{% url 'accounts:views' order.pk %}">
+        
+        <table>
+          
+          <tr>
+              <td>Заказ № {{ order.id }}</td>
+              <td>{{ order.status }}</td>
+              <td>{{ order.created }}</td>
+              <td>{{ order.final_price }} &#8381;</td>
+          </tr>
+        </table></a>
+      {% endfor %}
+    </div>
+   </main>
+  </body>
+</html>
