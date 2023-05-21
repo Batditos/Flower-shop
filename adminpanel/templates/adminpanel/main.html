@@ -6,16 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link href="{% static 'css/main.css' %}" rel="stylesheet" />
     <link href="{% static 'css/adminpanel.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/admin.css' %}" rel="stylesheet" />
     <link href="{% static 'css/update.css' %}" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
     <aside class="navBar">
+      <a href="{% url 'accounts:profile_views' %}">
       <h3>
         <img class="image_user" src="{{user.image_user.url}}" alt="" />
-        {{ user.first_name }} {{ user.last_name }}
-      </h3>
+        <span class="userName">{{ user.first_name }} {{ user.last_name }}</span>
+      </h3></a>
       <p>{{ user.status }}</p>
       <ul>
         <li><a href="{% url 'adminpanel:users' %}">Клиенты</a></li>
