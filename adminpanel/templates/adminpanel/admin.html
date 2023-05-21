@@ -2,9 +2,13 @@
 {% block title %}Панель администратора{% endblock %} 
 {% block content %}
 <div class="info">
-  <p>
-    <span>общее кол-во заказов</span>
-    <span>общее кол-во пользователей {{ len_users }}</span>
-  </p>
+  <div class="lenOrders">
+    <h4>Всего заказов</h4>
+    <h1>{{ len_orders }}</h1>
+  </div>
+  <div class="lenUsers">
+    <h4>Всего пользователей</h4>
+    <h1>{{ len_users }}</h1>
+  </div>
 </div>
 {% endblock %}
