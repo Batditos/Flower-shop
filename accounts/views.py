@@ -1,6 +1,7 @@
 
 # from django.db import transaction
-from django.shortcuts import redirect, render
+from django.http import HttpRequest
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.utils.translation import gettext_lazy
 from django.contrib import messages
@@ -8,8 +9,37 @@ from django.contrib import messages
 from accounts.forms import CustomUserCreationForm, LoginForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-
+from django.views.generic.edit import UpdateView
+from accounts.models import User
 from basket.basket import Basket
+from orders.models import Order, OrderItem
+from django.views.generic.detail import DetailView
+
+
+@login_required
+def profile_views(request):
+    basket = Basket(request)
+    order_items = Order.objects.filter(
+        user=request.user).order_by('-id')
+    # order_items = Order.objects.filter(order_id=)
+    assert isinstance(request, HttpRequest)
+    context = {
+        "basket": basket,
+        "order_items": order_items
+    }
+    return render(request, 'account/profile.html', context)
+
+
+class OrderViews(DetailView):
+    model = Order
+    template_name = 'account/orderview.html'
+
+
+class UpdateProfile(UpdateView):
+    model = User
+    template_name = 'account/updateprofile.html'
+    fields = ['image_user', 'first_name', 'last_name', 'email', 'phone_number']
+    labels = {'email': '1111'}
 
 
 def user_login(request):
@@ -23,26 +53,16 @@ def user_login(request):
 
             if user is not None:
                 if user.is_active:
-
                     login(request, user)
-                    return redirect('accounts:profile_views')
+                    if user.is_staff == True:
+                        return redirect('adminpanel:admin')
+                    else:
+
+                        return redirect('accounts:profile_views')
+
     else:
         form = LoginForm()
     return render(request, 'registration/login.html', {'form': form})
-
-
-def logout_views(request):
-    logout(request)
-    return redirect('accounts:user_login')
-
-
-@login_required
-def profile_views(request):
-    basket = Basket(request)
-    context = {
-        "baskets": basket
-    }
-    return render(request, 'account/profile.html', context)
 
 
 def register(request):
@@ -55,6 +75,7 @@ def register(request):
         if form.is_valid():
             print('line 46')
             form.save()
+            print('save')
             cd = form.cleaned_data
             user = authenticate(
                 email=cd['email'], password=cd['password1'])
@@ -67,6 +88,18 @@ def register(request):
         form = CustomUserCreationForm()
 
     return render(request, 'registration/register.html', {'form': form})
+
+
+def logout_views(request):
+    logout(request)
+    return redirect('accounts:user_login')
+
+# def my_orders(request):
+#     order_items = Order.objects.filter(user=request.user)
+#     # order_items = Order.objects.all()
+#     print(order_items)
+#     assert isinstance(request, HttpRequest)
+#     return render(request, 'account/profile.html', {'order_items': order_items,})
 
 # @login_required
 # @transaction.atomic
@@ -92,4 +125,3 @@ def register(request):
 #         'user_form': user_form,
 #         'profile_form': profile_form
 #     })
-
