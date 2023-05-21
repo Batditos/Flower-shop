@@ -1,0 +1,42 @@
+{% extends 'adminpanel/main.html' %} {% block title %}Заказы{% endblock %}
+{%block content %}
+<div class="infoPanel">
+  <h2>Заказы</h2>
+  <table>
+    <tr>
+      <th></th>
+      <th>№ заказа</th>
+      <th>Статус</th>
+      <th>Дата</th>
+      <th>Обновлен</th>
+      <th>Имя клиента</th>
+      <th>Email</th>
+      <th>Номер телефон</th>
+      <th>Сумма заказа</th>
+      <th></th>
+      <th></th>
+    </tr>
+    {% for order in orders %}
+    
+    <tr class="order-tr">
+      
+        <td scope="row"></td>
+        <td>{{ order.id}}</td>
+        <td>{{order.status}}</td>
+        <td>{{order.created}}</td>
+        <td>{{order.updated}}</td>
+        <td>{{order.user.last_name}} {{order.user.first_name}}</td>
+        <td>{{order.user.email}}</td>
+        <td>{{order.user.phone_number}}</td>
+        <td>{{order.final_price}} &#8381;</td>
+      
+      <td>
+        <a href="{% url 'adminpanel:updateorder' order.id %}">Обновить</a>
+      </td>
+      <td><a href="{% url 'adminpanel:viewsorder' order.pk %}">Детали заказа</a></td>
+    </tr>
+  
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}
