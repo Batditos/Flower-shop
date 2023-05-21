@@ -1,0 +1,16 @@
+{% extends 'account/mainprofile.html' %} 
+{% block title %}Редактирование{% endblock %} 
+{% block content %}
+  <div class="containerProfile">
+    <div class="userProfile">
+      <div class="image">
+        <img src="{{ user.image_user.url }}" alt="Фото" />
+      </div>
+       <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %} {{ form.as_table }}
+    
+        <p><input type="submit" value="Обновить" /></p>
+      </form>
+  </div>
+ 
+{% endblock %}
