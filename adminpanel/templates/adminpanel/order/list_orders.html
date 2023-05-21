@@ -1,0 +1,21 @@
+{% extends 'adminpanel/main.html' %} {% block title %}Заказы №{{ order.id }} {% endblock %}
+{%block content %}
+<div class="infoPanel">
+    <h2> Заказ № {{ order.id }} Статус: {{ order.status }}</h2>
+    
+    <table>
+        {% for items in order.items.all %}
+        <tr>
+            
+            <td><img src="{{ items.product.image.url }}" alt="" height="150px", width="150px"></td>
+            <td>{{ items.product }}</td>
+            <td>{{ items.quantity }} шт.</td>
+            <td>{{ items.price }} &#8381;</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    
+    <h2>Итого: {{ order.final_price }} &#8381;</h2>
+</div>
+{% endblock %}
