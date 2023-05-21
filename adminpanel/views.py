@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView,  CreateView, DeleteView
-
+from django.views.generic.detail import DetailView
 from accounts.models import User
 from adminpanel.forms import UpdateProductForm
 from orders.models import Order, OrderItem
@@ -15,12 +15,15 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 def admin(request):
     users = User.objects.all()
+    order = Order.objects.all()
     products = Product.objects.all()
     len_users = len(users)
+    len_orders = len(order)
     context = {
         'users': users,
         'products': products,
-        'len_users': len_users
+        'len_users': len_users,
+        'len_orders': len_orders
     }
     return render(request, 'adminpanel/admin.html', context)
 
@@ -54,7 +57,7 @@ class UpdateProduct(UpdateView):
 
 class AddProduct(CreateView):
     model = Product
-    template_name = 'adminpanel/addproduct.html/'
+    template_name = 'adminpanel/product/addproduct.html/'
     fields = ['image', 'name', 'price', 'quantity', 'category', 'description']
 
 
@@ -63,11 +66,18 @@ class DelProduct(DeleteView):
     template_name = 'adminpanel/product/delproduct.html/'
     success_url = reverse_lazy('adminpanel:products')
 
+class OrderViews(DetailView):
+    model = Order
+    template_name = 'adminpanel/order/list_orders.html/'
 
 def orders(request):
     orders= Order.objects.all()
-    orderitem = OrderItem.objects.all()
     context = {
-        'orders': orders, 'orderitem': orderitem
+        'orders': orders
     }
-    return render(request, 'adminpanel/orders.html', context)
+    return render(request, 'adminpanel/order/orders.html', context)
+class UpdateOrder(UpdateView):
+    model = Order
+    template_name = 'adminpanel/order/updateorder.html/'
+    fields = ['status']
+    
