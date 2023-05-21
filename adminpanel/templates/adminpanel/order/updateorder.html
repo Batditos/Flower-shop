@@ -1,0 +1,24 @@
+{% extends 'adminpanel/main.html' %} {% load static %}
+ {% block title%}Обновление заказа{% endblock %} {% block content%}
+<div class="containerUpdate">
+  <h1>Данные о заказе</h1>
+<div class="containerUpOrder">
+  
+  <p><b>Дата заказа:</b> <span>{{ order.created}}</span></p>
+    <p><b>ФИО покупателя:</b> <span>{{ order.user.first_name }} {{ order.user.last_name }}</span></p>
+    <p><b>Телефон:</b> <span>{{ order.user.phone_number }}</span></p>
+    <p><b>Email:</b> <span>{{ order.user.email }}</span></p>
+    <p><b>Адрес:</b> <span>{{ order.address}}</span></p>
+    <p><b>Коментарий к заказу:</b> <span>{{ order.comment }}</span></p>
+    <p><b>Наименование:</b> <span>{{ order.order_items }}</span></p>
+  
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %} {{ form.as_table }}
+  
+      <input class="submit" type="submit" value="Обновить" />
+    </form>
+
+</div>
+  
+</div>
+{% endblock %}
