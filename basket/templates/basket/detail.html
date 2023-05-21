@@ -29,17 +29,19 @@
               <a
                 class="minus"
                 href="{% url 'basket:minus_quantity' product.id %}"
-                >-</a
+                ><b>-</b></a
               >
               <span class="quantity">{{ item.quantity }}</span>
               <a class="plus" href="{% url 'basket:plus_quantity' product.id %}"
-                >+</a
+                ><b>+</b></a
               >
             </td>
             <td>{{ item.total_price }} &#8381;</td>
             <td>
               <a href="{% url 'basket:basket_remove' product.id %}">Удалить</a>
             </td>
+            <td></td>
+            <td></td>
           </tr>
           {% endwith %} {% endfor %}
         </table>
@@ -55,7 +57,8 @@
             Итого:
             <span class="totalPrice">{{ basket.get_total_price }} &#8381;</span>
           </h2>
-          <input class="submit" type="submit" value="Заказать" />
+          <form action="{% url 'orders:order' %}" method="post">{% csrf_token %}
+            <input class="submit" type="submit" value="Заказать" />
         </div>
         <p>
           Соглашаюсь с <a href="">правилами пользования торговой площадкой</a> и
