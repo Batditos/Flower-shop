@@ -8,6 +8,7 @@
     <link href="{% static 'css/main.css' %}" rel="stylesheet" />
     <link href="{% static 'css/showcase.css' %}" rel="stylesheet" />
     <script src="{% static 'js/timer.js' %}"></script>
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>"Что-то на цветочном"</title>
@@ -15,70 +16,121 @@
   <body>
     <div class="containerTimer">
       <p id="timer">
-        До 9 Мая осталось:
+        До пред. защиты осталось:
         <span id="timer-days"> </span>
         <span id="timer-hours"> </span>
         <span id="timer-mins"> </span>
         <span id="timer-secs"> </span>
       </p>
     </div>
-
     <div class="containerHeading">
-      <div class="menu">
-        <a href="/"><img src="{% static 'image/menu.png' %}" alt="Меню" /></a>
-      </div>
+      
       <div class="neonHeading">
         <h3 class="heading_title">
           "Что-то <br />
           на цветочном" <br />
-          <span class="subtitle">Студия флористического дизайна</span>
+          
         </h3>
+        <p class="subtitle">Студия флористического дизайна</p>
       </div>
       <div class="menu">
+        <div class="navi">
+          <a href="catalog/">Каталог</a>
+          <a href="adminpanel/">Админка</a>
+          <a href="/">О нас</a>
+        </div>
         <a href="/">
-          <img src="{% static 'image/search.png' %}" alt="Поиск"
+         
+          <img src="{% static 'image/poisk.png' %}" alt="Поиск"
         /></a>
+        {% if baskets.len > 0 %}
         <a href="basket/">
           {% if baskets.len > 0 %}
           <p class="lenBasket">{{ baskets.len }}</p>
           {% else %}{% endif %}<img
-            src="{% static 'image/basket.png' %}"
-            alt="Корзина"
-          />
+          src="{% static 'image/cart1.png' %}"
+          alt="Корзина"
+        />
         </a>
+        
+        {% else %}
+        <a href=""><img src="{% static 'image/cart1.png' %}" alt="Корзина"/></a>
+      {% endif %}
         {% if request.user.is_authenticated %}
         <a href="accounts/profile/"
-          ><img src="{% static 'image/user.png' %}" alt="Профиль"
+          ><img src="{% static 'image/users.png' %}" alt="Профиль"
         /></a>
         {% else %}
         <a href="accounts/login/"
-          ><img src="{% static 'image/user.png' %}" alt="Регистрация"
+          ><img src="{% static 'image/users.png' %}" alt="Регистрация"
         /></a>
         {% endif %}
+      
       </div>
     </div>
     <div class="conteinerManagement">
-      <a href="catalog/">Каталог</a>
-      <a href="adminpanel/">Админка</a>
-      <a href="/">Мастер классы</a>
-      <a href="/">sale</a>
-      <a href="/">Цветочная подписка</a>
-      <a href="/">О нас</a>
+      
     </div>
-    <div class="like"><p>Советуем:</p></div>
+
+     <p class="like">
+      <span>В наличии</span><br />
+      ONLINE ВИТРИНА
+    </p>
     <div class="containerShowcase">
       {% for product in products %}
-      <div class="containerDescription">
-        <img class="image" src="{{ product.image.url }}" />
-        <p class="title">Букет "{{ product.name }}"</p>
-        <h3 class="price">{{ product.price }} &#8381;</h3>
-        <p class="description"></p>
-        <form action="{% url 'basket:basket_add' product.id %}" method="post">
-          {{ cart_product_form }} {% csrf_token %}
-          <input type="submit" value="Купить" />
-        </form>
-      </div>
+      <a class="views" href="{% url 'main:detailproduct' product.pk %}"
+        ><div class="containerDescription">
+          <img class="image" src="{{ product.image.url }}" />
+          <h3 class="price">{{ product.price }} &#8381;</h3>
+          <p class="title">Букет "{{ product.name }}"</p>
+
+          <p class="description"></p>
+        
+        </div></a>
       {% endfor %}
     </div>
+    <p class="like">
+      <span>лучшее для вас</span><br />
+      БЕСТСЕЛЕРЫ
+    </p>
+    <div class="containerShowcase">
+      {% for product in products %}
+      <a class="views" href="{% url 'main:detailproduct' product.pk %}"
+        ><div class="containerDescription">
+          <img class="image" src="{{ product.image.url }}" />
+          <h3 class="price">{{ product.price }} &#8381;</h3>
+          <p class="title">Букет "{{ product.name }}"</p>
+
+          <p class="description"></p>
+     
+        </div></a>
+      {% endfor %}
+    </div>
+    <div class="containerEnd">
+      <div>
+        <div>
+          <img src="{% static 'image/delivery.png' %}" alt="" />
+          <p><b>БЫСТРАЯ ДОСТАВКА</b></p>
+          <span>Доставляем букет по всей Москве</span>
+        </div>
+        <div>
+          <img src="{% static 'image/hands.png' %}" alt="" />
+          <p><b>КАЧЕСТВЕНЫЙ СЕРВИС</b></p>
+          <span>Вежливый сервис от звонка до двери</span>
+        </div>
+      </div>
+      <div>
+        <div>
+          <img src="{% static 'image/flower.png' %}" alt="" />
+          <p><b>СВЕЖИЕ ЦВЕТЫ</b></p>
+          <span>Мы тщательно отбираем цветы и следим за их качеством</span>
+        </div>
+        <div>
+          <img src="{% static 'image/photo.png' %}" alt="" />
+          <p><b>ФОТОКОНТРОЛЬ БУКЕТА</b></p>
+          <span>Делаем фото перед отправкой букета</span>
+        </div>
+      </div>
+    </div> 
   </body>
 </html>
