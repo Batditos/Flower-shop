@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/orderviews.css' %}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Заказ № {{ order.id }}</title>
+  </head>
+  <body>
+    <div class="containerViewOrders" >
+      <h3 class="order"> Заказ № {{ order.id }} </h3>
+      <p>Статус заказа: {{ order.status }}</p>
+      <p>Дата оформления: {{ order.created }}</p>
+    
+    <table>
+        {% for items in order.items.all %}
+        <tr>
+            
+            <td><img src="{{ items.product.image.url }}" alt="" height="150px", width="150px"></td>
+            <td>{{ items.product }}</td>
+            <td>{{ items.quantity }} шт.</td>
+            <td>{{ items.price }} &#8381;</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <p>Комментарии к заказу: {{ order.comments }}</p>
+    <h2>Итого: {{ order.final_price }} &#8381;</h2>
+    </div>
+  </body>
+</html>
