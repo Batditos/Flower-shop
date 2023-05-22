@@ -1,0 +1,78 @@
+.containerOrder {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.order-info {
+    margin-top: 5%;
+    height: 90%;
+    width: 50%;
+}
+.order-info h3 {
+    margin-top: 55px;
+}
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    
+    width: 100%;
+}
+td {
+    padding: 10px;
+}
+.formOrder {
+    margin-top: 5%;
+    width: 50%;
+    height: 90%;
+}
+ul li {
+    list-style-type: none;
+    margin: 0;
+    display: none;
+}
+
+ul {
+    margin: 0;
+}
+.formOrder p {
+    margin-top: 0;
+}
+.formOrder h4 {
+    text-align: center;
+}
+.form {
+    margin: 30px auto;
+    width: 350px;
+    height: 550px;
+    /* background-color: rgba(0, 0, 255, 0.589); */
+}
+#id_first_name, #id_last_name, #id_phone, #id_address {
+   
+    height: 35px;
+    width: 350px;
+    margin: 10px;
+    font-family: monospace;
+    margin: 15px;
+}
+#id_comments {
+    width: 350px;
+    height: 100px;
+    margin: 30px 0 0 15px;
+}
+#id_delivery_type {
+    width: 350px;
+    height: 35px;
+    margin: 20px 0 0 15px;
+}
+.submit {
+    border: none;
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    margin: 80px 0 0 15px;
+  }
+  .submit:hover {
+    color: green;
+  }

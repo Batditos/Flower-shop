@@ -1,66 +1,113 @@
 .containerProfile {
-  background-color: rgba(127, 255, 212, 0.267);
-  display: flex;
-  margin: auto;
-  width: 75%;
-  height: 95vh;
-}
-.profile {
-  margin-top: 2em;
-  width: 70%;
-  height: 91vh;
-  background-color: rgba(255, 0, 200, 0.178);
-}
-.userProfile {
-  display: flex;
-
-  margin: auto;
-  background-color: rgba(55, 253, 115, 0.425);
-  height: 25em;
-  width: 95%;
-}
-.image {
-  background-color: rgba(0, 0, 255, 0.575);
-  height: 12em;
-  width: 12em;
+  /* background-color: rgba(214, 127, 255, 0.747); */
   margin: 2em;
-}
-
-.image > img {
-  height: 100%;
-  width: 100%;
-}
-.userInfo {
-  margin: 2em 0 0 0;
-  background-color: rgba(255, 210, 127, 0.397);
-  height: 12em;
+  display: flex;
+  margin-left: 10%;
   width: 50%;
-}
-.basket {
   height: 300px;
-  width: 450px;
-  margin: 2em;
-  background-color: aqua;
+}
+.ContainerBasketInfo {
+  text-align: center;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 14px;
+  height: 300px;
+  width: 400px;
+  float: right;
+  /* background-color: rgba(0, 255, 255, 0.5); */
+  margin: 2em 0 0 2em;
+  /* border: 1px solid rgba(3, 243, 163, 0.425); */
 }
 .BasketInfo {
   text-align: left;
-  background-color: rgba(253, 255, 240, 0.493);
+  /* background-color: rgba(253, 255, 240, 0.493); */
   height: 65%;
   width: 90%;
   margin: 1.2em;
 }
 .totalPrice {
-  margin-left: 45%;
+  float: right;
 }
 .submit {
-  margin: 15px 10px 0 10px;
-  font-size: 20px;
-  width: 420px;
-  height: 60px;
-  background-color: rgb(0, 221, 147);
+  /* background-color:rgba(29, 150, 110, 0.089); */
   border: none;
-  border-radius: -1px;
+  height: 40px;
+  width: 100%;
+  font-size: 20px;
+  margin-top: 55px;
+  text-decoration: none;
 }
 .submit:hover {
-  background-color: rgb(3, 243, 163);
+  color: green;
+}
+main h3 {
+  margin-left: 10%;
+  margin-top: 5%;
+}
+.ContainerOrderInfo {
+  background-color: white;
+  height: 180px;
+  width: 900px;
+  margin-left: 10%;
+  margin-top: 3%;
+  padding: 20px;
+  overflow: auto;
+}
+.info {
+  /* background-color: rgba(179, 248, 248, 0.452); */
+  display: flex;
+  flex-wrap: wrap;
+  height: 70%;
+  width: 400px;
+  float: right;
+  margin-right: 10%;
+}
+.image {
+  /* background-color: rgba(0, 0, 255, 0.575); */
+  height: 240px;
+  width: 192px;
+  margin: 2em;
+}
+.image > img {
+  height: 192px;
+  width: 192px;
+}
+
+.userProfile {
+  display: flex;
+  /* background-color: rgba(137, 43, 226, 0.527); */
+  height: 100%;
+  width: 650px;
+}
+.userInfo {
+  margin: 2em;
+  height: 192px;
+  width: 300px;
+  /* background-color: rgba(65, 250, 48, 0.637); */
+}
+.logout {
+  height: 20px;
+  color: green;
+  font-size: 14px;
+}
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  /* border-bottom: 1px solid #000000; */
+  text-align: center;
+  padding: 8px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: green;
+}
+.back {
+  margin-top: 20px;
+  margin-left: 10%;
 }

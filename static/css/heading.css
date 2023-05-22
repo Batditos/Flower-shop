@@ -8,71 +8,56 @@
   
   .menu {
     display: flex;
-    align-items: flex-start;
-    width: 30%;
+    align-items: start;
+    width: 100%;
     height: 30vh;
     background-color: rgba(0, 247, 255, 0.336);
   }
-  .menu a {
+  .menu > a {
     margin: 10px;
     padding: 20px 22px;
-    background-color: rgba(255, 30, 49, 0.479);
+    height: 3em;
+    width: 3em;
+    /* background-color: rgba(255, 30, 49, 0.479); */
+  }
+  .menu img {
+    height: 2.8em;
+    width: 2.8em;
+  }
+  .iconmenu {
+    position: relative;
+    left: 40%;
   }
   .lenBasket {
     text-decoration: none;
     color: white;
-    padding: 7px 12px;
+    padding: 5px 10px;
     position: absolute;
-    top:45px;
-    right: 150px;
-    background-color: rgb(247, 47, 47);
+    top:90px;
+    right: 16%;
+    background-color: green;
     border-radius: 50%;
   }
   .neonHeading {
     height: 100%;
     width: 100%;
+    /* background-color: aqua; */
   }
   .heading_title {
     padding: 0;
+    
     margin: 0;
+    margin-left: -7%;
     text-align: center;
     font-family: "Segoe Script";
     letter-spacing: 4px;
     font-style: italic;
-    font-size: 3em;
+    font-size: 2.5em;
     font-weight: 300;
-    color: rgb(250, 171, 211);
-    text-shadow: 0 0 1px rgb(250, 171, 211), 0 0 2px rgb(250, 171, 211),
-      0 0 5px rgb(250, 171, 211), 0 0 11px rgb(255, 60, 157),
-      0 0 20px rgb(255, 60, 157), 0 0 30px rgb(255, 60, 157),
-      0 0 45px rgb(255, 60, 157), 0 0 70px rgb(255, 60, 157);
+    color: #d4a0ffb4;
   }
-  @keyframes flicker {
-    0%,
-    18%,
-    22%,
-    25%,
-    53%,
-    57%,
-    100% {
-      text-shadow: 0 0 1px rgb(250, 171, 211), 0 0 2px rgb(250, 171, 211),
-        0 0 5px rgb(250, 171, 211), 0 0 11px rgb(255, 60, 157),
-        0 0 20px rgb(255, 60, 157), 0 0 30px rgb(255, 60, 157),
-        0 0 45px rgb(255, 60, 157), 0 0 70px rgb(255, 60, 157);
-    }
-    20%,
-    24%,
-    55% {
-      text-shadow: none;
-    }
-  }
-  
-  /* h1 {
-      margin: 10px;
-      /* animation: flicker 1.5s infinite alternate;  */
-  /* font-size: 3rem;     */
-  /* } */
   .subtitle {
+    margin-left: -8%;
     font-size: 1.1rem;
     text-align: center;
     color: green;
@@ -99,21 +84,19 @@
     justify-content: center;
     height: 8vh;
     width: 100%;
-    background-color: rgba(137, 43, 226, 0.281);
+    /* background-color: rgba(137, 43, 226, 0.281); */
   }
   .conteinerManagement > a {
     margin: 0 20px;
   }
-  .like {
-    width: 100%;
-    height: 2vh;
-    position: absolute;
-  }
-  .like > p {
-    padding-left: 12em;
-    margin: 0;
-    left: 12%;
-    top: -1em;
-    font-size: 20px;
-  }
-  
+.navi {
+  background-color: aqua;
+  height: 100px;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-content: end;
+}
+.navi  a {
+  margin: 10px;
+}

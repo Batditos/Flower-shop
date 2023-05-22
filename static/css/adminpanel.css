@@ -1,5 +1,6 @@
 .navBar {
-  background-color: rgba(179, 248, 248, 0.452);
+  position: fixed;
+  background-color: rgba(253, 252, 252, 0.863);
   height: 100vh;
   width: 260px;
   float: left;
@@ -11,30 +12,32 @@ h3 {
 }
 
 .navBar h3 {
+  margin-top: 25%;
   padding: 20px;
   text-align: center;
   border-bottom: 1px solid black;
 }
-.navBar a {
+a {
   text-decoration: none;
   color: black;
+}
+a:hover {
+  color: green;
 }
 .navBar li {
   padding: 15px 20px;
   font-size: 18px;
 }
-
-.info {
-  margin: auto;
-  background-color: rgba(248, 28, 164, 0.37);
-  height: 100vh;
-  width: 70vw;
+.infoPanel {
+  margin-left: 300px;
+  height: 100%;
+  width: 80%;
+  background-color: rgba(253, 252, 252, 0.863);
 }
-.info h2 {
-  background-color: aquamarine;
-  width: 68vw;
+.infoPanel > h2 {
   margin: 0;
-  padding: 15px;
+  padding: 30px;
+  
 }
 table {
   border-collapse: collapse;
@@ -44,14 +47,19 @@ table {
 td,
 th {
   border-bottom: 1px solid #000000;
-  text-align: left;
+  text-align: center;
   padding: 8px;
+}
+.order-tr:hover {
+  background-color: rgba(0, 128, 0, 0.219);
 }
 .image_user {
   height: 45px;
   width: 45px;
   border-radius: 50%;
 }
-th {
-  background-color: rgba(63, 255, 127, 0.767);
+.navBar .userName {
+  position: relative;
+  top: -15px;
+  margin-left: 15px;
 }

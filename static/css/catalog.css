@@ -1,36 +1,104 @@
 .navBar {
   display: flex;
   align-items: center;
-  justify-content: end;
-  height: 7vh;
-  width: 100vw;
-  background-color: rgba(255, 217, 0, 0.384);
+  height: 4%;
+  width: 100%;
+  margin-top: 15px;
+  /* background-color: rgba(255, 217, 0, 0.384); */
+  letter-spacing: 4px;
+    word-spacing: 8px;
 }
 .navBar h4 {
-  margin-right: 10px;
+  margin-right: 6%;
   padding: 0 20px;
 }
 
 .containerCatalog {
   margin: auto;
-  width: 80%;
-  height: 93vh;
+  margin-top: 30px;
+  width: 85%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-content: space-between;
-  background-color: rgba(216, 50, 50, 0.308);
+  flex-wrap: wrap;
+  letter-spacing: 4px;
+    word-spacing: 8px;
+  /* background-color: rgba(216, 50, 50, 0.308); */
+}
+.price {
+  letter-spacing: 0;
+    word-spacing: 0;
 }
 .containerDescription {
-  background-color: aqua;
-  width: 20em;
-  height: 26em;
+  /* background-color: aqua; */
+  width: 344px;
+  height: 448px;
   margin: 1.5rem;
+  margin-top: 5em;
+  padding: 0;
+  transition: 0.4s;
 }
+.containerDescription:hover {
+  width: 360px;
+  height: 29em;
+  transition: 0.4s;
+}
+
 .image {
-  height: 70%;
+  height: 75%;
   width: 100%;
 }
 img {
   object-fit: cover;
   object-position: 50% 50%;
 }
+.views {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.submit {
+  margin-top: 10px;
+  border: none;
+  width: 100%;
+  height: 2.6em;
+  font-size: 16px;
+}
+.submit:hover {
+  color: green;
+}
+p {
+  margin: 0;
+}
+.back {
+  float: left;
+  width: 15%;
+  font-size: 16px;
+  margin-right: 45%;
+  margin-left: 10%;
+}
+.back a:hover {
+  color: green;
+}
+.search {
+  height: 25px;
+  width: 12rem;
+  margin-right: 0;
+  padding-right: 0;
+  font-family: monospace;
+}
+.submit_buttom {
+  height: 25px;
+  width: 80px;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+.submit_buttom:hover {
+  color: green;
+}
+

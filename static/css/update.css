@@ -1,8 +1,12 @@
 .containerUpdate {
-  background-color: rgba(250, 235, 215, 0.473);
   height: 100vh;
   width: 70%;
-  margin: auto;
+  margin-left: 300px;
+}
+.containerAdd {
+  height: 100%;
+  width: 70%;
+  margin-left: 300px;
 }
 .update_form,
 .image_product {
@@ -11,7 +15,7 @@
 h1,
 h4 {
   margin: 0;
-  padding: 20px 0 0 150px;
+  padding: 20px 0 0 90px;
 }
 .image_product {
   margin-top: 10em;
@@ -19,8 +23,15 @@ h4 {
   height: 25em;
 }
 .update_form {
-  background-color: rgba(0, 255, 255, 0.425);
   float: right;
+  height: 35em;
+  width: 25em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.add_form, .containerUpOrder {
+  margin: 5em;
   height: 35em;
   width: 25em;
   text-align: center;
@@ -41,4 +52,26 @@ h4 {
 }
 #id_description {
   height: 5em;
+}
+.submit {
+  /* background-color: white; */
+  border: none;
+  height: 40px;
+  width: 100%;
+  font-size: 20px;
+  margin-top: 55px;
+  text-decoration: none;
+}
+.submit:hover {
+  color: green;
+}
+.containerUpOrder span {
+  float: right;
+}
+.containerUpOrder b {
+  float: left;
+}
+#id_status {
+  height: 30px;
+  width: 130px;
 }

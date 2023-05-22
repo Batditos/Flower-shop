@@ -1,39 +1,44 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .navBar {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  height: 5vh;
-  width: 100vw;
-  background-color: rgba(255, 217, 0, 0.384);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 7vh;
+    width: 100%;
+    /* background-color: rgba(255, 217, 0, 0.384); */
 }
 .navBar h4 {
-  margin-right: 10px;
-  padding: 0 20px;
+  margin-left: 10%;
+}
+.navBar a:hover {
+  color: green;
+
 }
 .containerBasket {
-  background-color: rgba(127, 255, 212, 0.267);
+  /* background-color: rgba(127, 255, 212, 0.267); */
   display: flex;
   margin: auto;
-  width: 75%;
-  height: 95vh;
+  width: 85%;
+  height: 100%;
 }
 .containerProduct {
   margin-top: 2em;
   width: 70%;
-  height: 91vh;
+  height: 100%;
 
-  background-color: rgba(255, 0, 200, 0.178);
+  /* background-color: rgba(255, 0, 200, 0.178); */
 }
 .image {
-  height: 21vh;
-  width: 11vw;
+  height: 250px;
+  width: 250px;
 }
 table {
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   font-size: 14px;
-  /* border: 1px solid #a9e2cc; */
-
-  /* max-width: 100%; */
   width: 100%;
   border-collapse: collapse;
   text-align: left;
@@ -42,14 +47,13 @@ table {
 th {
   font-weight: normal;
   text-align: center;
-
-  background-color: rgba(0, 247, 255, 0.37);
   padding: 10px 8px;
 }
 td {
   padding: 9px 8px;
   transition: 0.3s linear;
   text-align: center;
+  font-size: 14px;
 }
 .ContainerBasketInfo {
   text-align: center;
@@ -57,45 +61,60 @@ td {
   font-size: 14px;
   height: 300px;
   width: 400px;
-  background-color: rgba(0, 255, 255, 0.5);
+  /* background-color: rgba(0, 255, 255, 0.5); */
   margin: 2em 0 0 2em;
-  border: 1px solid rgba(3, 243, 163, 0.425);
+  /* border: 1px solid rgba(3, 243, 163, 0.425); */
 }
 .BasketInfo {
   text-align: left;
-  background-color: rgba(253, 255, 240, 0.493);
+  /* background-color: rgba(253, 255, 240, 0.493); */
   height: 65%;
   width: 90%;
   margin: 1.2em;
 }
 .totalPrice {
-  margin-left: 45%;
+  float: right;
 }
 .submit {
-  margin: 15px 10px 0 10px;
-  font-size: 20px;
-  width: 95%;
-  height: 30%;
-  background-color: rgb(0, 221, 147);
+  /* background-color: white; */
   border: none;
-  border-radius: -1px;
+  height: 40px;
+  width: 100%;
+  font-size: 20px;
+  margin-top: 55px;
+  text-decoration: none;
 }
 .submit:hover {
-  background-color: rgb(3, 243, 163);
+  color: green;
 }
 .plus {
   text-decoration: none;
   font-size: 25px;
-  background-color: rgba(68, 255, 115, 0.507);
+  /* background-color: rgba(68, 255, 115, 0.507); */
   padding: 0 10px;
+  color: black;
+}
+.plus:hover {
+  color: green;
 }
 .minus {
   text-decoration: none;
-  font-size: 25px;
-  background-color: rgba(252, 82, 82, 0.507);
+  font-size: 26px;
+  /* background-color: rgba(252, 82, 82, 0.507); */
   padding: 0 12px;
+  color: black;
+}
+.minus:hover {
+  color: rgb(255, 0, 119);
 }
 .quantity {
   margin: 0 10px;
   font-size: 16px;
+}
+td a {
+  text-decoration: none;
+  color: black;
+}
+td a:hover {
+  color: rgb(255, 0, 119);
 }
