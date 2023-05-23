@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from Flower_shop import mail_secret
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -142,3 +143,11 @@ AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailAuthBackend'
 ]
 PHONENUMBER_DEFAULT_REGION = "RU"
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = 'flowershop01@yandex.ru'
+EMAIL_HOST_PASSWORD = mail_secret.Password
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
